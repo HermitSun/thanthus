@@ -1,4 +1,5 @@
 require 'fileutils'
+require_relative '../utils/os'
 
 module Xanthus
   class Job
@@ -47,10 +48,12 @@ module Xanthus
         end
         script = 'echo "nothing to do"'
         script = self.output_script(machine, @outputs[machine]) unless  @outputs[machine].nil?
-        File.open('before_halt.sh', 'w+') do |f|
+        # add simple support for Windows
+        before_halt_hook = "before_halt.#{sys_script_ext}"
+        File.open(before_halt_hook, 'w+') do |f|
           f.write(script)
         end
-        system('chmod', '+x', 'before_halt.sh')
+        system('chmod', '+x', before_halt_hook)
       end
     end
 

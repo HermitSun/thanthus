@@ -1,3 +1,5 @@
+require_relative '../utils/os'
+
 module Xanthus
   class VirtualMachine
     attr_accessor :name
@@ -75,11 +77,13 @@ script += %Q{
    aws.security_groups = ['#{@aws_security_group}']
   end
 } unless !@on_aws
+
+# add simple support for Windows
 script += %Q{  config.vm.provision "shell", path: "provision.sh"
 
   config.trigger.before :halt do |trigger|
     trigger.info = "Retrieving data before halt..."
-    trigger.run = {path: "before_halt.sh"}
+    trigger.run = {path: "before_halt.#{sys_script_ext}"}
   end
 end
 }
