@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "xanthus/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "xanthus"
+  spec.name          = "thanthus"
   spec.version       = Xanthus::VERSION
   spec.authors       = ['Thomas Pasquier', 'Xueyuan "Michael" Han', 'Yilun Sun']
   spec.email         = ["syl1887415157@126.com"]
