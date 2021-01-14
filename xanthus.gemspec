@@ -6,11 +6,11 @@ require "xanthus/version"
 Gem::Specification.new do |spec|
   spec.name          = "xanthus"
   spec.version       = Xanthus::VERSION
-  spec.authors       = ['Thomas Pasquier', 'Xueyuan "Michael" Han']
-  spec.email         = ["thomas.pasquier@bristol.ac.uk"]
+  spec.authors       = ['Thomas Pasquier', 'Xueyuan "Michael" Han', 'Yilun Sun']
+  spec.email         = ["syl1887415157@126.com"]
 
   spec.summary       = %q{Automated intrusion detection dataset generation framework.}
-  spec.description   = %q{Automated intrusion detection dataset generation framework.}
+  spec.description   = %q{This version is forked from xanthus. As I finished this work when studying in THU, I name this version `thanthus`}
   spec.homepage      = "http://camflow.org"
   spec.license       = "MIT"
 

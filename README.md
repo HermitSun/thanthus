@@ -1,5 +1,7 @@
 # Xanthus: Automated Reproducible Data Generation for Evaluating Intrusion Detection Systems
 
+> I add simple Windows support. As I finished this work when studying in THU, I name this version `thanthus`.
+
 Fairly evaluating and comparing the efficacy of different intrusion detection systems (IDS) requires that experimental data
 be generated in a similar mechanism and/or shared across these systems.
 The reality, unfortunately, is that there exist few public repositories (e.g., DARPA 1998/1999/2000, KDD Cup99, DARPA TC Engagement 3)
