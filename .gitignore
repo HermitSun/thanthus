@@ -9,3 +9,9 @@
 /test/
 *.gem
 *.xanthus
+
+# ruby
+*.lock
+
+# IDE conf
+.idea/
