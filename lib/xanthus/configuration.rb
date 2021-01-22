@@ -5,6 +5,7 @@ module Xanthus
     attr_accessor :affiliation
     attr_accessor :email
     attr_accessor :description
+    attr_accessor :share_folder
     attr_accessor :seed
     attr_accessor :params
     attr_accessor :vms
@@ -14,6 +15,7 @@ module Xanthus
     attr_accessor :dataverse_conf
 
     def initialize
+      @share_folder = true
       @params = Hash.new
       @vms = Hash.new
       @scripts = Hash.new
@@ -24,6 +26,7 @@ module Xanthus
       vm = VirtualMachine.new
       yield(vm)
       vm.name = name
+      vm.share_folder = @share_folder
       @vms[name] = vm
     end
 
@@ -81,14 +84,14 @@ seed: #{@seed}
     config.dataverse_conf.init(config) unless config.dataverse_conf.nil?
 
     # executing jobs
-    config.jobs.each do |name,job|
-      for i in 0..(job.iterations-1) do
+    config.jobs.each do |name, job|
+      for i in 0..(job.iterations - 1) do
         job.execute config, i
       end
     end
 
     # finalizing storage backends
-    config.github_conf.tag  unless config.github_conf.nil?
-    config.github_conf.clean  unless config.github_conf.nil?
+    config.github_conf.tag unless config.github_conf.nil?
+    config.github_conf.clean unless config.github_conf.nil?
   end
 end

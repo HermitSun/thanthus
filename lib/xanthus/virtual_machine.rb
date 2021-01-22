@@ -13,6 +13,7 @@ module Xanthus
     attr_accessor :boxing
     attr_accessor :ssh_username
     attr_accessor :ssh_key_path
+    attr_accessor :share_folder
     attr_accessor :on_aws
     attr_accessor :aws_env_key_id
     attr_accessor :aws_env_key_secret
@@ -31,6 +32,7 @@ module Xanthus
       @cpus = 2
       @cpu_cap = 70
       @gui = false
+      @share_folder = true
       @boxing = nil
       @ssh_username = nil
       @ssh_key_path = nil
@@ -49,8 +51,8 @@ if Vagrant.has_plugin?("vagrant-vbguest")
 end
 }
 script += %Q{
-  config.vm.synced_folder ".", "/vagrant", disabled: false, type: 'rsync'
-} unless !@on_aws
+  config.vm.synced_folder ".", "/vagrant", disabled: #{!@share_folder}, type: 'rsync'
+}
 script += %Q{
   config.ssh.username = "#{@ssh_username}"
 } unless ssh_username.nil?
